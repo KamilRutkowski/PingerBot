@@ -12,7 +12,7 @@ namespace Pinger.Modules
     public class MainCommands: ModuleBase
     {
         [Command("Add")]
-        public async Task AddCommand(string commandName, string response)
+        public async Task AddCommand(string commandName, string response, string description)
         {
             if (GlobalConfig.Commands.Where(c => c.Name == commandName).Any())
             {
@@ -20,7 +20,7 @@ namespace Pinger.Modules
                 return;
             }
             var updatedCommands = GlobalConfig.Commands;
-            updatedCommands.Add(new CommandObject { Name = commandName, Response = response });
+            updatedCommands.Add(new CommandObject { Name = commandName, Response = response, Description = description});
             GlobalConfig.Commands = updatedCommands;
             await Context.Channel.SendMessageAsync($"Command {commandName} added successfully");
         }
@@ -44,24 +44,25 @@ namespace Pinger.Modules
         {
             List<string> buildInCommands = new List<string>
             {
-                "Add - Adding new custom command (!Command Add <command name> <\"command response\">)",
+                "Add - Adding new custom command (!Command Add <command name> <\"command response\"> <\"description\">)",
                 "Delete - Delete custom command (!Command Delete <command name>)",
                 "Help - Shows help, you just called it :)!"
             };
+            var user = Context.User;
             StringBuilder sb = new StringBuilder();
             sb.Append("Build in commands (call with !Command <command name>):\n");
             foreach(var bic in buildInCommands)
             {
                 sb.Append($"{bic}\n");
-            }
-            await Context.Channel.SendMessageAsync(sb.ToString());
+            }            
+            await Context.User.SendMessageAsync(sb.ToString());
             sb.Clear();
             sb.Append("Custom commands:\n");
             foreach(var command in GlobalConfig.Commands)
             {
-                sb.Append("!"+command.Name + "\n");
+                sb.Append($"!{command.Name} - {command.Description}\n");
             }
-            await Context.Channel.SendMessageAsync($"{sb.ToString()}");
+            await Context.User.SendMessageAsync($"{sb.ToString()}");
         }
     }
 }
