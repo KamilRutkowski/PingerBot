@@ -81,7 +81,9 @@ namespace Pinger
 
         private Task SendChannelMessage(ICommandContext context, object[] parameters, IServiceProvider arg3, CommandInfo command)
         {
-            return context.Channel.SendMessageAsync(GlobalConfig.Commands.First(c => c.Name == command.Name).Response);
+            if (GlobalConfig.Commands.Any(c => c.Name == command.Name))
+                return context.Channel.SendMessageAsync(GlobalConfig.Commands.First(c => c.Name == command.Name).Response);
+            return context.Channel.SendMessageAsync("Command failed");
         }       
 
         private async Task InstallCommandHandler()
