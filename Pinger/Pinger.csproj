@@ -101,7 +101,7 @@
     <Compile Include="CommandObject.cs" />
     <Compile Include="ConfigurationObject.cs" />
     <Compile Include="GlobalConfig.cs" />
-    <Compile Include="Modules\AddCommand.cs" />
+    <Compile Include="Modules\MainCommands.cs" />
     <Compile Include="PingerBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

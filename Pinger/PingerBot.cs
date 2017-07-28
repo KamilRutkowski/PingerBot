@@ -50,6 +50,8 @@ namespace Pinger
             await _client.LoginAsync(TokenType.Bot, GlobalConfig.BotToken);
             await _client.StartAsync();
 
+            await _client.SetGameAsync("!Command Help");
+
             await Task.Delay(-1);
         }
 
@@ -65,6 +67,8 @@ namespace Pinger
 
         private async Task SetCommands()
         {
+            if(_commandService.Modules.Any(m => m.Name == ""))
+                await _commandService.RemoveModuleAsync(_commandService.Modules.First(m => m.Name == ""));
             await _commandService.CreateModuleAsync("", module =>
             {                
                 GlobalConfig.Commands.ForEach(command =>
