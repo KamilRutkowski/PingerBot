@@ -31,6 +31,46 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Discord.Net.Commands, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Discord.Net.Commands.1.0.1\lib\netstandard1.1\Discord.Net.Commands.dll</HintPath>
@@ -98,9 +138,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioService.cs" />
     <Compile Include="CommandObject.cs" />
     <Compile Include="ConfigurationObject.cs" />
     <Compile Include="GlobalConfig.cs" />
+    <Compile Include="Modules\AudioCommands.cs" />
     <Compile Include="Modules\MainCommands.cs" />
     <Compile Include="PingerBot.cs" />
     <Compile Include="Program.cs" />
@@ -113,6 +155,40 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="AudioFiles\ay.mp3" />
+    <Content Include="AudioFiles\blendzior.mp3" />
+    <Content Include="AudioFiles\bogactwo.mp3" />
+    <Content Include="AudioFiles\bogactwo2.mp3" />
+    <Content Include="AudioFiles\chlew.mp3" />
+    <Content Include="AudioFiles\chuje.mp3" />
+    <Content Include="AudioFiles\cosiedzieje.mp3" />
+    <Content Include="AudioFiles\cygan.mp3" />
+    <Content Include="AudioFiles\dlapana.mp3" />
+    <Content Include="AudioFiles\dwieszczotki.mp3" />
+    <Content Include="AudioFiles\garby.mp3" />
+    <Content Include="AudioFiles\iteraztak.mp3" />
+    <Content Include="AudioFiles\koszulki.mp3" />
+    <Content Include="AudioFiles\kuhwa.mp3" />
+    <Content Include="AudioFiles\nadczlowiek.mp3" />
+    <Content Include="AudioFiles\nedzarze.mp3" />
+    <Content Include="AudioFiles\newyork.mp3" />
+    <Content Include="AudioFiles\niedlapsa.mp3" />
+    <Content Include="AudioFiles\nojaktam.mp3" />
+    <Content Include="AudioFiles\osrane.mp3" />
+    <Content Include="AudioFiles\polacy.mp3" />
+    <Content Include="AudioFiles\polki.mp3" />
+    <Content Include="AudioFiles\posilek.mp3" />
+    <Content Include="AudioFiles\prokurator.mp3" />
+    <Content Include="AudioFiles\smierdza.mp3" />
+    <Content Include="AudioFiles\terazbrzuch.mp3" />
+    <Content Include="AudioFiles\tlumaczy.mp3" />
+    <Content Include="AudioFiles\wlesie.mp3" />
+    <Content Include="AudioFiles\yyykuhwa.mp3" />
+    <Content Include="AudioFiles\zapomniec.mp3" />
+    <Content Include="AudioFiles\zeby.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

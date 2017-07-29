@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Discord;
+using Discord.Audio;
 
 namespace Pinger
 {
@@ -34,6 +36,8 @@ namespace Pinger
                 _sub.OnNext(true);
             }
         }
+
+        public static AudioService AudioService { get; set; }
 
         private static void SerializeData()
         {
@@ -68,6 +72,7 @@ namespace Pinger
             DeserializeData();
             _sub = new Subject<bool>();
             CommandsUpdated = _sub.AsObservable();
+            AudioService = new AudioService();
         }
     }
 }

@@ -9,7 +9,7 @@ using Discord.Commands;
 namespace Pinger.Modules
 {
     [Group("Command")]
-    public class MainCommands: ModuleBase
+    public class MainCommands : ModuleBase
     {
         [Command("Add")]
         public async Task AddCommand(string commandName, string response, string description)
@@ -20,7 +20,7 @@ namespace Pinger.Modules
                 return;
             }
             var updatedCommands = GlobalConfig.Commands;
-            updatedCommands.Add(new CommandObject { Name = commandName, Response = response, Description = description});
+            updatedCommands.Add(new CommandObject { Name = commandName, Response = response, Description = description });
             GlobalConfig.Commands = updatedCommands;
             await Context.Channel.SendMessageAsync($"Command {commandName} added successfully");
         }

@@ -1,6 +1,8 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
+using Discord.Audio;
+using Discord.Audio.Streams;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -18,13 +20,13 @@ namespace Pinger
         CommandService _commandService;
         IDisposable _commandUpdatedCallback;
         
-
         public PingerBot(DiscordSocketConfig conf, CommandService comService)
         {
             _config = conf;
             _client = new DiscordSocketClient(_config);
             _client.Log += log;
             _commandService = comService;
+            
         }
         
         ~PingerBot()
